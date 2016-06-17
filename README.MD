@@ -20,4 +20,4 @@ Running tests are accomplished by running `ginkgo -r` from the root directory of
 If you want tests to continuously run while files are being changed then run `ginkgo watch -r` from the root of the project.
     
 # Builds
-Builds of this project can be done locally with `go install` and on each commit the project is compiled and tested via 
+Builds of this project can be done locally with `go install` and on each commit the project is compiled and tested via Travis

@@ -19,7 +19,7 @@ details brokerapi.ProvisionDetails,
 asyncAllowed bool,
 ) (brokerapi.ProvisionedServiceSpec, error) {
 	// Provision a new instance here. If async is allowed, the broker can still
-	// chose to provision the instance synchronously.
+	// chose to provision the instance synchronously
 }
 
 func (*vaultServiceBroker) LastOperation(instanceID string) (brokerapi.LastOperation, error) {
@@ -51,8 +51,8 @@ func main() {
 	serviceBroker := &vaultServiceBroker{}
 	logger := lager.NewLogger("vault-service-broker")
 	credentials := brokerapi.BrokerCredentials{
-		Username: "username",
-		Password: "password",
+		Username: os.Getenv("BROKER_USERNAME"),
+		Password: os.Getenv("BROKER_PASSWORD"),
 	}
 
 	brokerAPI := brokerapi.New(serviceBroker, logger, credentials)

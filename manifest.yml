@@ -1,0 +1,6 @@
+---
+applications:
+- name: vault-service-broker
+  instances: 1
+  path: .
+  memory: 64m

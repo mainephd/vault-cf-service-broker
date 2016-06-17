@@ -28,7 +28,6 @@ var _ = Describe("Service Broker API", func() {
 
 		It("has a Content-Type header", func() {
 			response := makeRequest()
-
 			header := response.Header().Get("Content-Type")
 			Ω(header).Should(Equal("application/json"))
 		})

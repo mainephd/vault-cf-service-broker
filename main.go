@@ -5,13 +5,34 @@ import (
 	"github.com/pivotal-golang/lager"
 	"net/http"
 	"os"
+	"github.com/pborman/uuid"
 )
 
 type vaultServiceBroker struct {}
 
 func (*vaultServiceBroker) Services() []brokerapi.Service {
 	// Return a []brokerapi.Service here, describing your service(s) and plan(s)
-	return []brokerapi.Service{}
+	return []brokerapi.Service{
+		brokerapi.Service{
+			ID : uuid.New(),
+			Name : "thd-oracle-credentials",
+			Description: "Used for retrieving credentials to connect to oracle",
+			Bindable: false,
+			PlanUpdatable: false,
+			Plans: []brokerapi.ServicePlan{brokerapi.ServicePlan{
+				ID: uuid.New(),
+				Name: "PCI",
+				Description: "Plan for accessing PCI data",
+			},brokerapi.ServicePlan{
+				ID: uuid.New(),
+				Name: "PII",
+				Description: "Plan for accessing PII data",
+			},brokerapi.ServicePlan{
+				ID: uuid.New(),
+				Name: "Non-PCI and Non-PII",
+				Description: "Plan for accessing non PCI and non PII data",
+			}},
+		}}
 }
 
 func (*vaultServiceBroker) Provision(
